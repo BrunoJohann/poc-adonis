@@ -20,23 +20,14 @@ node ace migration:run
 https://mesa-adonis.herokuapp.com
 ```
 
-### Rotas
-┌───────────┬───────────────────────────┬──────────────────────────────┬────────────┐
-│ Method    │ Route                     │ Handler                      │ Middleware │
-├───────────┼───────────────────────────┼──────────────────────────────┼────────────┤
-│ HEAD, GET │ /evaluation/:location_id? │ EvaluationsController.index  │ auth       │
-├───────────┼───────────────────────────┼──────────────────────────────┼────────────┤
-│ POST      │ /evaluation/:location_id  │ EvaluationsController.create │ auth       │
-├───────────┼───────────────────────────┼──────────────────────────────┼────────────┤
-│ HEAD, GET │ /locations/:id?           │ LocationsController.index    │ auth       │
-├───────────┼───────────────────────────┼──────────────────────────────┼────────────┤
-│ POST      │ /locations                │ LocationsController.create   │ auth       │
-├───────────┼───────────────────────────┼──────────────────────────────┼────────────┤
-│ POST      │ /user                     │ UsersController.create       │            │
-├───────────┼───────────────────────────┼──────────────────────────────┼────────────┤
-│ POST      │ /user/login               │ UsersController.login        │            │
-├───────────┼───────────────────────────┼──────────────────────────────┼────────────┤
-│ HEAD, GET │ /user/logout              │ UsersController.logout       │ auth       │
-├───────────┼───────────────────────────┼──────────────────────────────┼────────────┤
-│ PUT       │ /user/:id                 │ UsersController.update       │ auth       │
-└───────────┴───────────────────────────┴──────────────────────────────┴────────────┘
+### URIs
+```
+  - GET   -  /evaluation/:location_id?   -   auth
+  - POST  -  /evaluation/:location_id    -   auth
+  - GET   -  /locations/:id?             -   auth
+  - POST  -  /locations                  -   auth
+  - POST  -  /user
+  - POST  -  /user/login
+  - GET   -  /user/logout                -   auth
+  - PUT   -  /user/:id                   -   auth
+ ```
