@@ -15,7 +15,28 @@ docker-compose up
 node ace migration:run
 ```
 
-### Listar rotas
+### HEROKU URL
 ```
-node ace list:routes
+https://mesa-adonis.herokuapp.com
 ```
+
+### Rotas
+┌───────────┬───────────────────────────┬──────────────────────────────┬────────────┐
+│ Method    │ Route                     │ Handler                      │ Middleware │
+├───────────┼───────────────────────────┼──────────────────────────────┼────────────┤
+│ HEAD, GET │ /evaluation/:location_id? │ EvaluationsController.index  │ auth       │
+├───────────┼───────────────────────────┼──────────────────────────────┼────────────┤
+│ POST      │ /evaluation/:location_id  │ EvaluationsController.create │ auth       │
+├───────────┼───────────────────────────┼──────────────────────────────┼────────────┤
+│ HEAD, GET │ /locations/:id?           │ LocationsController.index    │ auth       │
+├───────────┼───────────────────────────┼──────────────────────────────┼────────────┤
+│ POST      │ /locations                │ LocationsController.create   │ auth       │
+├───────────┼───────────────────────────┼──────────────────────────────┼────────────┤
+│ POST      │ /user                     │ UsersController.create       │            │
+├───────────┼───────────────────────────┼──────────────────────────────┼────────────┤
+│ POST      │ /user/login               │ UsersController.login        │            │
+├───────────┼───────────────────────────┼──────────────────────────────┼────────────┤
+│ HEAD, GET │ /user/logout              │ UsersController.logout       │ auth       │
+├───────────┼───────────────────────────┼──────────────────────────────┼────────────┤
+│ PUT       │ /user/:id                 │ UsersController.update       │ auth       │
+└───────────┴───────────────────────────┴──────────────────────────────┴────────────┘
