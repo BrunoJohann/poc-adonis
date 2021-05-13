@@ -8,9 +8,7 @@
 import Env from '@ioc:Adonis/Core/Env'
 import { DatabaseConfig } from '@ioc:Adonis/Lucid/Database'
 
-const ssl = Env.get('NODE_ENV') == 'development'
-  ? { }
-  : { ssl: { rejectUnauthorized: true } }
+const SSL = Env.get('DISABLE_SSL', 'false') == 'true' ? { } : { ssl: { rejectUnauthorized: true } }
 
 const databaseConfig: DatabaseConfig = {
   /*
@@ -45,7 +43,7 @@ const databaseConfig: DatabaseConfig = {
         user: Env.get('PG_USER'),
         password: Env.get('PG_PASSWORD', ''),
         database: Env.get('PG_DB_NAME'),
-        ...ssl
+        ...SSL
       },
       migrations: {
         naturalSort: true,
