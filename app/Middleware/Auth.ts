@@ -13,7 +13,7 @@ export default class AuthMiddleware {
   /**
   * The URL to redirect to when request is Unauthorized
   */
-  protected redirectTo = '/login'
+  protected redirectTo = '/user/login'
 
   /**
    * Authenticates the current HTTP request against a custom set of defined
@@ -50,7 +50,7 @@ export default class AuthMiddleware {
      * Unable to authenticate using any guard
      */
     throw new AuthenticationException(
-      'Unauthorized access',
+      'Necessário estar logado para realizar essa operação',
       'E_UNAUTHORIZED_ACCESS',
       guardLastAttempted,
       this.redirectTo,
@@ -66,11 +66,7 @@ export default class AuthMiddleware {
      * the config file
      */
     const guards = customGuards.length ? customGuards : [auth.name]
-    try {
-      await this.authenticate(auth, guards)
-    } catch {
-      return response.unauthorized({ error: 'Necessário estar logado para realizar essa operação' })
-    }
+    await this.authenticate(auth, guards)
     await next()
   }
 }
