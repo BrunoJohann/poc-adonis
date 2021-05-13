@@ -21,15 +21,21 @@ export default class UsersController {
 
     const { email, password } = request.body()
 
-    const token = await auth.use('api').attempt(email, password, {
-      expiresIn: '200min'
-    })
-
-    return token
+    try {
+      return await auth.use('api').attempt(email, password, {
+        expiresIn: '200min'
+      })
+    } catch (err) {
+      return err
+    }
   }
 
   async logout({ auth }: HttpContextContract) {
-    await auth.use('api').revoke()
+    try {
+      return await auth.use('api').revoke()
+    } catch (err) {
+      return err
+    }
   }
 
   async update({ request, response, auth, params }: HttpContextContract) {
